@@ -84,9 +84,26 @@
                           .filter(streetName => streetName.includes('de'))
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const aTobSort = people.sort((a, b) => { // сортируем список
+      let [aLast, aFirst] = a.split(', ') // разделяем в отдельные массивы имя и фамилию
+      let [bLast, bFirst] = b.split(', ') // для каждой пары из списка
+        return aLast > bLast ? 1 : -1 // сортируем через if и возвращаем 1 или -1
+    })
+    console.log(aTobSort);
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'dickOnTheStick'];
+
+    let vehicle = data.reduce((obj, item) => {
+      console.log(obj);
+      if(!obj[item]) // т.к. мы ещё не знаем общее число транспортных средств
+        obj[item] = 0 // при первой итерации примем это за 0
+      obj[item]++ // потом для каждого объекта увеличиваем количество на 1
+      return obj // возвращаем итоговое число объектов
+
+    }, {}) // стартуем с пустого объекта
+    console.log(vehicle);
   </script>
 </body>
 </html>
